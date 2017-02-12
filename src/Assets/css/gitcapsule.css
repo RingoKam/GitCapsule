@@ -1,0 +1,29 @@
+.bungee {
+    font-family: "Bungee"
+}
+
+.colorBackground {
+    background-color: #253557
+}
+
+.sidebarBackground {
+    background-color: #FAFAFA
+}
+
+.sidebarListItemBackground {
+    background-color: whitesmoke;
+    border: black
+}
+
+.centerText {
+    text-align: center
+}
+
+.loadingScreen {
+    font-size: 50px; 
+    color: #002269;
+    position: absolute;
+    top:  50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
