@@ -1,0 +1,50 @@
+<md-card id="popupContainer">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-display-1 bungee"> Export Bash Script </span>
+            <span class="md-subhead"> (*) Required </span>
+        </md-card-title-text>
+        <!--<md-button class="md-fab" aria-label="Create New Capsule" ng-click="">
+            <md-icon aria-label="Add New" class="icon-11" style="font-size: 19"></md-icon>
+        </md-button>-->
+    </md-card-title>
+    <md-card-content>
+        <!--<pre> {{ model | json }} </pre> -->
+        <form name="shform">
+            <md-input-container class="md-block">
+                <label>Git Capsule</label>
+                <md-select ng-model="model.capsuleName">
+                    <md-option ng-value=""><em>None</em></md-option>
+                    <md-option ng-repeat="name in model.capsuleNames" ng-value="name">
+                        {{name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>File Name</label>
+                <input ng-model="model.name" required>
+                <div ng-messages="colorForm.favoriteColor.$error">
+                    <div ng-message="required">This is required!</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block" ng-click="model.SaveScriptLocation()">
+                <label> File Location </label>
+                <input type="text" ng-model="model.outputLocation" disabled="true" flex placeholder="export location" required>
+                <div ng-messages="colorForm.favoriteColor.$error">
+                    <div ng-message="required">This is required!</div>
+                </div>
+            </md-input-container>
+            <md-input-container class="md-block">
+                <label>Comment</label>
+                <textarea ng-model="model.comment" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+            </md-input-container>
+            <md-chips ng-show="model.gitFolders.length > 0">
+                <md-chip ng-repeat="git in model.gitFolders"> {{ git.file.name }}</md-chip>
+            </md-chips>
+            <md-card-actions layout="row" layout-align="center">
+                <!--<md-button class="md-primary md-raised" ng-click=""> Save </md-button>-->
+                <md-button md-colors="{color: 'default-background-hue-1'}" class="md-accent md-raised" ng-click="model.exportSh()"> Export </md-button>
+            </md-card-actions>
+        </form>
+    </md-card-content>
+</md-card>

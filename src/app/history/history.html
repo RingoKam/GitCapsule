@@ -1,0 +1,10 @@
+<md-list class="md-dense">
+    <md-list-item ng-repeat="capsule in model.capsules | orderBy: '-createdOn'" class="md-3-line" ng-click="model.changeState(capsule._id)">
+        <div class="md-list-item-text">
+            <h3 class="bungee">{{capsule.name}}</h3>
+            <h4>{{capsule.createdOn}}</h4>
+            <p>{{capsule.comment}}</p>
+        </div>
+        <md-divider></md-divider>
+    </md-list-item>
+</md-list>

@@ -1,0 +1,47 @@
+<md-card>
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-display-1 bungee"> Create Capsule </span>
+            <span class="md-subhead"> Select Git Repository(s) to be save/export </span>
+        </md-card-title-text>
+        <md-button class="md-fab" ng-click="model.OpenDirectory()">
+            <md-tooltip>Add Git Repo(s)</md-tooltip>
+            <md-icon md-colors="{color: 'default-background-hue-1'}" aria-label="Browse" class="ti-plus"></md-icon>
+        </md-button>
+        <md-button class="md-fab" ng-click="model.refreshGit()">
+            <md-tooltip>Refresh All</md-tooltip>
+            <md-icon md-colors="{color: 'default-background-hue-1'}" aria-label="Reload" class="ti-reload"></md-icon>
+        </md-button>
+    </md-card-title>
+    <md-card-content class="">
+        <div ng-if="model.loading">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+        </div>
+        <md-list ng-if="!model.loading">
+            <div>
+                <md-input-container>
+                    <label>Filter By</label>
+                    <input ng-model="model.filter"/>
+                </md-input-container>
+            </div>
+            <md-list-item ng-repeat="gitFolder in model.gitFolders | filter: model.filter" class="md-3-line fade">
+                <div class="md-list-item-text" layout="column">
+                    <md-checkbox ng-model="gitFolder.selected" ng-clicked="gitFolder.selected" ng-click="model.AddGitFolders(gitFolder)">
+                        <h3>
+                            <span style="font-weight:bold"> {{ gitFolder.file.name }} </span>
+                            <span> {{ gitFolder.repoInfo.branch }} </span>
+                        </h3>
+                        <h4> {{ gitFolder.repoInfo.root }} </h4>
+                        <p>
+                            <span style="font-style: italic"> {{ gitFolder.repoInfo.authorDate | date : format }} </span>
+                            <span> {{ gitFolder.repoInfo.commitMessage }} </span>
+                        </p>
+                        <md-button class="md-secondary">    
+                            <md-tooltip>Refresh Selected</md-tooltip>
+                            <md-icon aria-label="Reload" class="ti-reload" ng-click="model.refreshSelectedGit(gitFolder)"></md-icon>
+                        </md-button>
+                </div>
+            </md-list-item>
+        </md-list>
+    </md-card-content>
+</md-card>

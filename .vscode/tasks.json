@@ -1,0 +1,9 @@
+{
+    "version": "0.1.0",
+    "isShellCommand": true,
+    "args": [],
+    "command": "npm build",
+    "tasks": [{
+        "taskName": "build"
+    }]
+}

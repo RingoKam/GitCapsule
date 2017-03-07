@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="node_modules/bootstrap-css-only/css/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/ng-table/bundles/ng-table.css">
+<md-content flex>
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-display-1 bungee">Manage History</span>
+                <span class="md-subhead">View/Delete past record(s)</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+        </md-card-content>
+        <md-card-actions layout="" layout-align="center">
+            <md-button class="md-accent md-raised" ui-sref='root.home.create'>Create New Bash Script</md-button>
+        </md-card-actions>
+    </md-card>
+
+    <md-card>
+        <table ng-table="model.tableParams" class="table table-condensed table-bordered">
+            <tr ng-repeat="record in $data">
+                <td data-title="'Capsule'" header-class="'text-right'">
+                    {{record.capsule}}
+                </td>
+                <td data-title="'Name'" header-class="'text-right'">
+                    {{record.fileName}}
+                </td>
+                <td data-title="'Comment'" header-class="'text-right'">
+                    {{record.comment}}
+                </td>
+                <td data-title="'Created On'" header-class="'text-right'">
+                    {{record.createdOn}}
+                </td>
+                <td data-title="'# of Repos'" header-class="'text-center'">
+                    {{record.numberOfProject}}
+                </td>
+            </tr>
+        </table>
+    </md-card>
+</md-content>
