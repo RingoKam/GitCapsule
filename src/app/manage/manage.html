@@ -1,39 +1,54 @@
-<link rel="stylesheet" href="node_modules/bootstrap-css-only/css/bootstrap.min.css">
-<link rel="stylesheet" href="node_modules/ng-table/bundles/ng-table.css">
 <md-content flex>
     <md-card>
         <md-card-title>
             <md-card-title-text>
-                <span class="md-display-1 bungee">Manage History</span>
-                <span class="md-subhead">View/Delete past record(s)</span>
+                <span class="md-display-1">Git Capsule</span>
+                <span class="md-subhead"> Version. {{model.version}} </span>
             </md-card-title-text>
         </md-card-title>
-        <md-card-content>
-        </md-card-content>
-        <md-card-actions layout="" layout-align="center">
-            <md-button class="md-accent md-raised" ui-sref='root.home.create'>Create New Bash Script</md-button>
+        <md-card-actions>
+            <md-button ng-disabled="true" class="md-primary md-raised"> Configuration </md-button>
+            <md-button class="md-primary md-raised"> Add New Capsule </md-button>
+            <md-button class="md-primary md-raised" ui-sref='root.home.create'>Create Bash Script</md-button>
         </md-card-actions>
     </md-card>
 
-    <md-card>
-        <table ng-table="model.tableParams" class="table table-condensed table-bordered">
-            <tr ng-repeat="record in $data">
-                <td data-title="'Capsule'" header-class="'text-right'">
-                    {{record.capsule}}
-                </td>
-                <td data-title="'Name'" header-class="'text-right'">
-                    {{record.fileName}}
-                </td>
-                <td data-title="'Comment'" header-class="'text-right'">
-                    {{record.comment}}
-                </td>
-                <td data-title="'Created On'" header-class="'text-right'">
-                    {{record.createdOn}}
-                </td>
-                <td data-title="'# of Repos'" header-class="'text-center'">
-                    {{record.numberOfProject}}
-                </td>
-            </tr>
-        </table>
+    <md-card ng-repeat="collection in model.capsuleCollections">
+        <md-toolbar class="md-hue-2">
+            <div class="md-toolbar-tools">
+                <h2 flex md-truncate> {{ collection.name }}</h2>
+                <md-button aria-label="Expand" ng-click="collection.show = !collection.show">
+                    <span class="ti-more-alt"></span>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-card-content ng-show="collection.show">
+            <div class="">
+                <table class="pure-table pure-table-bordered">
+                    <thead>
+                        <tr>
+                            <th>FileName</th>
+                            <th>CreatedOn</th>
+                            <th>Repos#</th>
+                            <th>Comment</th>
+                            <th>Action(s)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="capsule in collection.capsules">
+                            <!--<td> {{capsule}} </td>  -->
+                            <td>{{capsule.fileName}}</td>
+                            <td>{{capsule.createdOn}}</td>
+                            <td>{{capsule.numberOfProject}}</td>
+                            <td>{{capsule.comment}}</td>
+                            <td>
+                                <md-button class="md-raised md-primary">Detail</md-button>
+                                <md-button class="md-raised md-warn">Delete</md-button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </md-card-content>
     </md-card>
 </md-content>

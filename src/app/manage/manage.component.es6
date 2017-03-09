@@ -1,4 +1,6 @@
 const dataStore = require('../library/datastore');
+const pkg = require('../../../package');
+
 import {
     NgTableParams
 } from 'ng-table';
@@ -9,6 +11,7 @@ export default {
     controllerAs: "model",
     bindings: {
         dbRecords: '<',
+        dbCapsuleNames: '<'
     }
 }
 
@@ -17,40 +20,31 @@ function ManageController($scope) {
 
     model.$onInit = function () {
         this.dbRecords;
-        model.capsuleCollections = RestructureData(this.dbRecords);
-        model.tableParams = new NgTableParams({}, {
-            dataset: model.capsuleCollections
-        });
+        this.dbCapsuleNames;
+        model.capsuleCollections = RestructureData(this.dbRecords, this.dbCapsuleNames);
+        model.version = pkg.version;
     };
 
     model.$onChanges = function (changesObj) {};
 
     model.$onDestory = function () {};
 
-    function RestructureData(data) {
-        return data.map(el => {
+    function RestructureData(capsules, capsuleNames) {
+        return capsuleNames.map((capsuleName) => {
             return {
-                capsule: el.capsule,
-                fileName: el.name,
-                createdOn: el.createdOn,
-                comment: el.comment,
-                numberOfProject: el.gitFiles.length
+                name: capsuleName.name,
+                capsules: capsules
+                    .filter((el) => el.capsule == capsuleName.name)
+                    .map((el) => {
+                        return {
+                            fileName: el.name,
+                            createdOn: el.createdOn,
+                            comment: el.comment,
+                            numberOfProject: el.gitFiles.length,
+                            json: el
+                        }
+                    })
             }
-        });
-        // let capsuleNames = data.map((cap) => {
-        //     return cap.capsule
-        // }).filter((name, index, array) => {
-        //     return array.indexOf(name) === index
-        // });
-        // let capsules = capsuleNames.map((name) => {
-        //     let collection = data.filter((d) => {
-        //         return d.capsule === name
-        //     })
-        //     return {
-        //         name,
-        //         collection
-        //     }
-        // })
-        // return capsules;
+        })
     }
 }
