@@ -51,7 +51,7 @@ function capsuleController($state, $rootScope, $scope, $mdDialog) {
             .cancel('Cancel');
 
         $mdDialog.show(confirm).then(function (name) {
-            if (!model.capsulesName.includes(name)) {
+            if (!model.capsulesName || !model.capsulesName.includes(name)) {
                 let promise = capsuleNameStore.insertdb({
                     name
                 });

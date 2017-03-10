@@ -10,6 +10,9 @@ var db = new nedb({
     autoload: true
 });
 
+db.ensureIndex({ fieldName: 'name', unique: true }, function (err) {
+});
+
 exports.insertdb = (doc) => {
     var deferred = Q.defer();
     db.insert(doc, ((err) => {

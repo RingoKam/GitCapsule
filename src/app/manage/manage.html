@@ -23,32 +23,30 @@
             </div>
         </md-toolbar>
         <md-card-content ng-show="collection.show">
-            <div class="">
-                <table class="pure-table pure-table-bordered">
-                    <thead>
-                        <tr>
-                            <th>FileName</th>
-                            <th>CreatedOn</th>
-                            <th>Repos#</th>
-                            <th>Comment</th>
-                            <th>Action(s)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="capsule in collection.capsules">
-                            <!--<td> {{capsule}} </td>  -->
-                            <td>{{capsule.fileName}}</td>
-                            <td>{{capsule.createdOn}}</td>
-                            <td>{{capsule.numberOfProject}}</td>
-                            <td>{{capsule.comment}}</td>
-                            <td>
-                                <md-button class="md-raised md-primary">Detail</md-button>
-                                <md-button class="md-raised md-warn">Delete</md-button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <table class="pure-table pure-table-bordered" flex>
+                <thead>
+                    <tr>
+                        <th>FileName</th>
+                        <th>CreatedOn</th>
+                        <th>Repos#</th>
+                        <th>Comment</th>
+                        <th>Action(s)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="capsule in collection.capsules">
+                        <!--<td> {{capsule}} </td>  -->
+                        <td>{{capsule.fileName}}</td>
+                        <td>{{capsule.createdOn}}</td>
+                        <td>{{capsule.numberOfProject}}</td>
+                        <td>{{capsule.comment}}</td>
+                        <td>
+                            <md-button class="md-raised md-primary" ng-click="model.ShowDetail(capsule.json)">Detail</md-button>
+                            <md-button class="md-raised md-warn">Delete</md-button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </md-card-content>
     </md-card>
 </md-content>

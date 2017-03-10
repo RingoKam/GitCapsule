@@ -15,7 +15,7 @@ export default {
     }
 }
 
-function ManageController($scope) {
+function ManageController($scope, $mdDialog) {
     let model = this;
 
     model.$onInit = function () {
@@ -46,5 +46,18 @@ function ManageController($scope) {
                     })
             }
         })
+    }
+
+    model.ShowDetail = (capsule) => {
+
+        $mdDialog.show(
+            $mdDialog.alert()
+            .parent(angular.element(document.querySelector('#popupContainer')))
+            .clickOutsideToClose(true)
+            .title('JSON')
+            .textContent(JSON.stringify(capsule))
+            .ariaLabel('JSON')
+            .ok('Got it!')
+        ); 
     }
 }

@@ -22,9 +22,9 @@ function createShController($mdDialog) {
     var model = this;
 
     model.$onInit = function () {
-        // capsuleNameStore.find({}).then((data) => {
-        //     model.capsuleNames = data.map(m => m.name);
-        // });
+        capsuleNameStore.find({}).then((data) => {
+            model.capsuleNames = data.map(m => m.name);
+        });
     };
     model.$onChanges = function (changesObj) {
         if (this.gitFolders)
