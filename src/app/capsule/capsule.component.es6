@@ -43,7 +43,7 @@ function capsuleController($state, $rootScope, $scope, $mdDialog) {
 
         var confirm = $mdDialog.prompt()
             .title('New Capsule Collection')
-            // .textContent('Capsule holds record of multiple git repo commit.')
+            // .textContent('Capsule holds record of multiple git repos.')
             .placeholder('* Capsule Name *')
             .ariaLabel('capsule name')
             .targetEvent(ev)
@@ -51,7 +51,7 @@ function capsuleController($state, $rootScope, $scope, $mdDialog) {
             .cancel('Cancel');
 
         $mdDialog.show(confirm).then(function (name) {
-            if (!model.capsulesName || !model.capsulesName.includes(name)) {
+            if (name && name.length > 0) {
                 let promise = capsuleNameStore.insertdb({
                     name
                 });

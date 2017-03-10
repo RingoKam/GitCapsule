@@ -8,7 +8,7 @@
         </md-card-title>
         <md-card-actions>
             <md-button ng-disabled="true" class="md-primary md-raised"> Configuration </md-button>
-            <md-button class="md-primary md-raised"> Add New Capsule </md-button>
+            <md-button class="md-primary md-raised" ng-click="model.PromptNewCapsule()"> Add New Capsule </md-button>
             <md-button class="md-primary md-raised" ui-sref='root.home.create'>Create Bash Script</md-button>
         </md-card-actions>
     </md-card>
@@ -16,7 +16,7 @@
     <md-card ng-repeat="collection in model.capsuleCollections">
         <md-toolbar class="md-hue-2">
             <div class="md-toolbar-tools">
-                <h2 flex md-truncate> {{ collection.name }}</h2>
+                <h2 flex md-truncate> {{ collection.name }} | Count: ({{collection.capsules.length}})</h2>
                 <md-button aria-label="Expand" ng-click="collection.show = !collection.show">
                     <span class="ti-more-alt"></span>
                 </md-button>

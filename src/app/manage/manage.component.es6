@@ -1,5 +1,7 @@
 const dataStore = require('../library/datastore');
+const capsuleNameStore = require('../library/capsule_name_store');
 const pkg = require('../../../package');
+const remote = require('electron').remote
 
 import {
     NgTableParams
@@ -15,7 +17,9 @@ export default {
     }
 }
 
-function ManageController($scope, $mdDialog) {
+ManageController.inject = ['$state'];
+
+function ManageController($state, $scope, $mdDialog) {
     let model = this;
 
     model.$onInit = function () {
@@ -58,6 +62,29 @@ function ManageController($scope, $mdDialog) {
             .textContent(JSON.stringify(capsule))
             .ariaLabel('JSON')
             .ok('Got it!')
-        ); 
+        );
+    }
+
+    model.PromptNewCapsule = (ev) => {
+
+        var confirm = $mdDialog.prompt()
+            .title('New Capsule Collection')
+            .textContent('Capsule are use to group multiple git repos together')
+            .placeholder('* Capsule Name *')
+            .ariaLabel('capsule name')
+            .targetEvent(ev)
+            .ok('Confirm')
+            .cancel('Cancel');
+
+        $mdDialog.show(confirm).then(function (name) {
+            if (name && name.length > 0) {
+                let promise = capsuleNameStore.insertdb({
+                    name
+                });
+                promise.finally(() => {
+                    remote.getCurrentWindow().reload();
+                })
+            }
+        });
     }
 }

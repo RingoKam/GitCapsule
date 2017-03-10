@@ -21,7 +21,8 @@ import manage from './manage/manage.component';
 import manageState from './manage/manage.state';
 import root from './root.component';
 import rootState from './root.state';
-
+import error from './error/error.component';
+import errorState from './error/error.state';
 import {
     GitFolderInfoService
 } from './services/git-folder-info.service';
@@ -46,7 +47,8 @@ angular
             .state('root', rootState)
             .state('root.home', homeState)
             .state("root.home.create", createState)
-            .state("root.manage", manageState);
+            .state("root.manage", manageState)
+            .state("root.error", errorState);
 
         $urlRouterProvider.otherwise('root/manage')
     }])
@@ -58,6 +60,7 @@ angular
     .component("createCapsule", createCapsule)
     .component("createSh", createSh)
     .component("manage", manage)
+    .component("error", error)
     .service("GitFolderInfoService", GitFolderInfoService)
 // home.config();
 
