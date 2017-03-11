@@ -24,24 +24,29 @@ module.exports = {
                 test: /\.(png|jpg|ttf|eot)$/,
                 exclude: /node_modules/,
                 loader: 'url-loader?limit=10000'
-            },{
+            }, {
                 test: /\.css$/,
                 loader: "style-loader!css-loader!autoprefixer-loader"
             }, {
                 test: /\.scss$/,
-                 loader: "style-loader!css-loader!sass-loader"
+                loader: "style-loader!css-loader!sass-loader"
             }, {
                 test: /\.html$/,
                 exclude: /node_modules/,
                 loader: "raw-loader"
-            },  {
+            }, {
                 test: [/fontawesome-webfont\.svg/, /fontawesome-webfont\.eot/, /fontawesome-webfont\.ttf/, /fontawesome-webfont\.woff/, /fontawesome-webfont\.woff2/],
                 loader: 'file?name=fonts/[name].[ext]'
             }, {
                 test: /\.json$/,
                 exclude: /node_modules/,
                 loader: "json-loader"
-            }
+            },
+            // {
+            //     test: require.resolve("jquery"),
+            //     loader: "expose-loader?$!expose-loader?jQuery"
+            // }
+
         ]
     },
     target: 'electron',

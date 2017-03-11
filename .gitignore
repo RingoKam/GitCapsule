@@ -32,6 +32,7 @@ jspm_packages
 releases
 data
 build
+oldsrc
 
 # Optional npm cache directory
 .npm

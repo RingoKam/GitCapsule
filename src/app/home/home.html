@@ -1,23 +1,40 @@
-<div>
-    <div flex layout="row">
-        <md-sidenav md-is-locked-open="true" class="md-sidenav-left md-whiteframe-4dp">
-            <md-tabs md-stretch-tabs="always" layout-fill class="md-primary">
-                <md-tab id="tab1">
-                    <md-tab-label><span class="bungee">History</span></md-tab-label>
-                    <md-tab-body>
-                        <history capsules="model.Capsules"></history>
-                    </md-tab-body>
-                </md-tab>
-                <md-tab id="tab2">
-                    <md-tab-label><span class="bungee">Capsules</span></md-tab-label>
-                    <md-tab-body>
-                        <capsule capsules="model.Capsules" on-update-capsule-name="model.onUpdateCapules"></capsule>
-                    </md-tab-body>
-                </md-tab>
-            </md-tabs>
-        </md-sidenav>
-        <md-content layout-fill>
-            <ui-view ng-animate="'view'"></ui-view>
-        </md-content>
+<div class="content">
+    <div class="container-fluid">
+        <!--<div heatmap chart-data="model.heatMapData"></div>-->
+        <div class="card" ng-repeat="collection in model.capsuleCollections">
+            <div class="card-header" data-background-color="red">
+                <h4 class="title"> {{ collection.name }} </h4>
+                <p class="category">Number of Bash Files: {{collection.capsules.length}} </p>
+            </div>
+            <div heatmap chart-data="model.heatMapData"></div>
+            <div class="card-content table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>FileName</th>
+                            <th>CreatedOn</th>
+                            <th>Repos#</th>
+                            <th>Comment</th>
+                            <th>Action(s)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="capsule in collection.capsules">
+                            <td>{{capsule.fileName}}</td>
+                            <td>{{capsule.createdOn}}</td>
+                            <td>{{capsule.numberOfProject}}</td>
+                            <td>{{capsule.comment}}</td>
+                            <td>
+                                <button class="btn btn-success">Create</button>
+                                <button class="btn btn-info" ng-click="model.ShowDetail(capsule.json)">Detail</button>
+                                <button class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer">
+            </div>
+        </div>
     </div>
 </div>
