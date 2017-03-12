@@ -1,0 +1,23 @@
+<div>
+    <div flex layout="row">
+        <md-sidenav md-is-locked-open="true" class="md-sidenav-left md-whiteframe-4dp">
+            <md-tabs md-stretch-tabs="always" layout-fill class="md-primary">
+                <md-tab id="tab1">
+                    <md-tab-label><span class="bungee">History</span></md-tab-label>
+                    <md-tab-body>
+                        <history capsules="model.Capsules"></history>
+                    </md-tab-body>
+                </md-tab>
+                <md-tab id="tab2">
+                    <md-tab-label><span class="bungee">Capsules</span></md-tab-label>
+                    <md-tab-body>
+                        <capsule capsules="model.Capsules" on-update-capsule-name="model.onUpdateCapules"></capsule>
+                    </md-tab-body>
+                </md-tab>
+            </md-tabs>
+        </md-sidenav>
+        <md-content layout-fill>
+            <ui-view ng-animate="'view'"></ui-view>
+        </md-content>
+    </div>
+</div>

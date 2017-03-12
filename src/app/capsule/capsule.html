@@ -1,0 +1,26 @@
+<!--<pre>{{ model.capsules | json }}</pre>-->
+<md-list class="md-dense">
+    <div ng-repeat="capsule in model.capsules">
+        <md-subheader md-colors="{background: 'default-background-hue-2'}" class="bungee centerText" ng-click="capsule.show = !capsule.show">
+            {{ capsule.name }}
+            <span ng-if="!capsule.show" class="ti-angle-down"></span>
+            <span ng-if="capsule.show" class="ti-angle-up"></span>
+        </md-subheader>
+        <div ng-show="capsule.show" ng-repeat="record in capsule.collection">
+            <md-list-item class="md-2-line" ng-click="model.changeState(record._id)">
+                <!--<pre> {{record | json}}</pre>-->
+                <div class="md-list-item-text">
+                    <h4>{{record.name}}</h4>
+                    <p>{{record.createdOn}}</p>
+                </div>
+            </md-list-item>
+        </div>
+        <md-divider></md-divider>
+    </div>
+    <md-subheader md-colors="{background: 'default-background-hue-2'}" class="md-warn bungee centerText md-raised" ng-click="model.PromptNewCapsule($event)">
+        <md-tooltip md-delay="1000">
+            Add New Capsule
+        </md-tooltip>
+        Add New (+)  
+    </md-subheader>
+</md-list>

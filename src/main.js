@@ -10,7 +10,7 @@ electron.app.on('ready', () => {
         height: 650,
         width: 1300,
         backgroundColor: '#00317D',
-        icon: path.join(__dirname, 'icon.ico'),
+        icon: path.join(__dirname, 'symbol.png'),
         show: false
     })
     mainWindow.once('ready-to-show', () => {

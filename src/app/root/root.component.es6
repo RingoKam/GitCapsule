@@ -1,3 +1,46 @@
+const dataStore = require('../library/datastore');
+const capsuleNameStore = require('../library/capsule_name_store');
+
 export default {
-    template: `<ui-view ng-animate="'view'"></ui-view>`
+    template: require("./root.html"),
+    controller: rootController,
+    controllerAs: "model"
+}
+
+function rootController() {
+    var model = this;
+
+    model.$onInit = function () {
+        GetCapsuleData();
+        GetCapsuleNameData();
+    };
+
+    model.$onChanges = function (changesObj) {};
+    model.$onDestory = function () {};
+
+    model.onUpdateCapsuleName = (name) => {
+        capsuleNameStore.insertdb(name).then((d) => {
+            GetCapsuleNameData();
+        })
+    }
+
+    model.onUpdateCapules = (obj) => {
+        dataStore.insertdb(obj).then((d) => {
+            GetCapsuleData();
+        })
+    }
+
+    function GetCapsuleData() {
+        dataStore.find({}).then((data) => {
+            model.Capsules = data;
+        }).catch((err) => {
+            console.log(err)
+        });
+    }
+
+    function GetCapsuleNameData() {
+        capsuleNameStore.find({}).then((data) => {
+            model.CapsuleName = data;
+        });
+    }
 }

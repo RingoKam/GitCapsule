@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
@@ -24,49 +23,20 @@
 	<!--     Fonts and icons     -->
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+	<link href="../assets/css/themify-icons.css" rel="stylesheet" />
 </head>
-
-<body>
-	<body ng-cloak ng-app="app" layout='column'>
-		<div class="wrapper">
-			<root></root>
-		</div>
-		<script>
-			window.$ = window.jQuery = require('jquery');
-			var d3 = require("d3"),
-				jsdom = require("jsdom"),
-				moment = require("moment");
-			var document = jsdom.jsdom(),
-				svg = d3.select(document.body).append("svg");
-
-			// var chartData = [{
-			// 	date: moment(),
-			// 	count: 10
-			// }];
-
-			// const calendarHeatmap = require("./library/calendarHeatmap/calendar-heatmap.js");
-
-			// var now = moment().endOf('day').toDate();
-			// var yearAgo = moment().startOf('day').subtract(1, 'year').toDate();
-			// var chartData = d3.time.days(yearAgo, now).map(function (dateElement) {
-			// 	return {
-			// 		date: dateElement,
-			// 		count: (dateElement.getDay() !== 0 && dateElement.getDay() !== 6) ? Math.floor(Math.random() * 60) : Math.floor(
-			// 			Math.random() * 10)
-			// 	};
-			// });
-
-			// var heatmap = calendarHeatmap.calendarHeatmap()
-			// 	.data(chartData)
-			// 	.selector('#testing')
-			// 	.tooltipEnabled(true)
-			// 	.colorRange(['#f4f7f7', '#79a8a9'])
-			// 	.onClick(function (data) {
-			// 		console.log('data', data);
-			// 	});
-			// heatmap(); // render the chart
-		</script>
-		<script type="text/javascript" src="../../build/js/bundle.js"></script>
-	</body>
-
+<body ng-cloak ng-app="app">
+	<div class="wrapper">
+		<root></root>
+	</div>
+	<script>
+		window.$ = window.jQuery = require('jquery');
+		var d3 = require("d3"),
+			jsdom = require("jsdom"),
+			moment = require("moment");
+		var document = jsdom.jsdom()
+			// svg = d3.select(document.body).append("svg");
+	</script>
+	<script type="text/javascript" src="../../build/js/bundle.js"></script>
+</body>
 </html>
