@@ -7,7 +7,8 @@ export default {
     controllerAs: "model"
 }
 
-function rootController() {
+function rootController($state) {
+
     var model = this;
 
     model.$onInit = function () {
@@ -16,19 +17,19 @@ function rootController() {
     };
 
     model.$onChanges = function (changesObj) {};
-    model.$onDestory = function () {};
+    model.$onDestory = function () {}; 
 
-    model.onUpdateCapsuleName = (name) => {
-        capsuleNameStore.insertdb(name).then((d) => {
-            GetCapsuleNameData();
-        })
-    }
+    // model.onUpdateCapsuleName = (name) => {
+    //     capsuleNameStore.insertdb(name).then((d) => {
+    //         GetCapsuleNameData();
+    //     })
+    // }
 
-    model.onUpdateCapules = (obj) => {
-        dataStore.insertdb(obj).then((d) => {
-            GetCapsuleData();
-        })
-    }
+    // model.onUpdateCapules = (obj) => {
+    //     dataStore.insertdb(obj).then((d) => {
+    //         GetCapsuleData();
+    //     })
+    // }
 
     function GetCapsuleData() {
         dataStore.find({}).then((data) => {

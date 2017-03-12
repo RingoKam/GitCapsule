@@ -20,6 +20,8 @@ import createCapsule from './CreateCapsule/create-capsule.component';
 import createSh from './CreateSh/create-sh.component';
 import history from './history/history.component';
 import capsule from './capsule/capsule.component';
+import capsuleNameFilter from './home/home-capsulename.filter';
+
 // import manage from './manage/manage.component';
 import {
     heatmap
@@ -46,7 +48,7 @@ angular
         $stateProvider
             .state('home', homeState)
             .state("create", createState)
-            
+
         $urlRouterProvider.otherwise('/home')
     }])
     .component("root", root)
@@ -57,6 +59,7 @@ angular
     .component("history", history)
     .component("createCapsule", createCapsule)
     .component("createSh", createSh)
+    .filter("capsulenamefilter", capsuleNameFilter)
     // .component("manage", manage)
     // .component("error", error)
     .service("GitFolderInfoService", GitFolderInfoService)

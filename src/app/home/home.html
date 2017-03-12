@@ -1,13 +1,15 @@
 <div class="">
     <div class="container-fluid">
+        <pre> {{ model.capsulename | json }} </pre>
         <!--<div heatmap chart-data="model.heatMapData"></div>-->
-        <div class="card" ng-repeat="collection in model.capsuleCollections">
+        <div class="card" ng-repeat="collection in model.capsuleCollections | capsulenamefilter:model.capsulename">
+            <!--<div class="card" ng-repeat="collection in model.capsuleCollections | filter:{'name': model.capsulename}:true">-->
             <div class="card-header" data-background-color="red">
                 <h4 class="title"> {{ collection.name }} </h4>
                 <p class="category">Number of Bash Files: {{collection.capsules.length}} </p>
             </div>
-            <div heatmap chart-data="model.heatMapData"></div>
-            <div class="card-content table-responsive">
+            <div class="card-content table-responsive" ng-if="collection.show">
+                <div heatmap chart-data="model.heatMapData"></div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -34,6 +36,9 @@
                 </table>
             </div>
             <div class="card-footer">
+                <p class="stats text-center" ng-click="collection.show = !collection.show">
+                    <i class="fa fa-arrow-down"></i> Show
+                </p>
             </div>
         </div>
     </div>

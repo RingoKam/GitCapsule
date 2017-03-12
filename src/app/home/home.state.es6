@@ -2,11 +2,12 @@ const dataStore = require('../library/datastore');
 const nameStore = require('../library/capsule_name_store');
 
 export default {
-    url: '/home',
+    url: '/home?capsulename',
     component: 'home',
     params: {
         dbRecords: [],
-        dbCapsuleNames: []
+        dbCapsuleNames: [],
+        capsulename: ""
     },
     resolve: {
         dbRecords: () => {
@@ -14,6 +15,9 @@ export default {
         },
         dbCapsuleNames: () => {
             return nameStore.find({});
+        },
+        capsulename: function($transition$) {
+            return $transition$.params().capsulename
         }
     }
 }

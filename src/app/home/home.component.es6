@@ -10,7 +10,8 @@ export default {
     controllerAs: "model",
     bindings: {
         dbRecords: '<',
-        dbCapsuleNames: '<'
+        dbCapsuleNames: '<',
+        capsulename: '<'
     }
 }
 
@@ -20,6 +21,7 @@ function ManageController($state, $scope, $mdDialog) {
     let model = this;
 
     model.$onInit = function () {
+        this.capsulename; 
         this.dbRecords;
         this.dbCapsuleNames;
         model.heatMapData = BuildHeatMapData(this.dbRecords);
@@ -53,6 +55,11 @@ function ManageController($state, $scope, $mdDialog) {
         //     };
         // });
     }
+
+    model.filterNull = function(field1) {
+      if(field1 === "" || field1 === null) return true;
+      return false
+    };
 
     function BuildTableData(capsules, capsuleNames) {
         return capsuleNames.map((capsuleName) => {

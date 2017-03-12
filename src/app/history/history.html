@@ -1,14 +1,20 @@
 <ul class="nav">
-    <li>
-        <a href="" class="active">
-            <i class="fa fa-git-square"></i>
-            <p>Dashboard</p>
+    <li ng-click="model.changeState()">
+        <a>
+            <i class="fa fa-bars"></i>
+            <p>All</p>
         </a>
     </li>
-    <li>
-        <a href="" class="active">
+    <li ng-repeat="capsulename in model.capsuleNames">
+        <a ng-click="model.changeState(capsulename)">
             <i class="fa fa-git-square"></i>
-            <p>Table List</p>
+            <p>{{capsulename.name}}</p>
+        </a>
+    </li>
+    <li ng-click="model.PromptNewCapsule()">
+        <a>
+            <i class="fa fa-plus-square"></i>
+            <p>Add New</p>
         </a>
     </li>
 </ul>
