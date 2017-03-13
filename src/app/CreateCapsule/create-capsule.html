@@ -4,7 +4,7 @@
     </div>
     <div class="card-content">
         <p class="category">Select Git Repos</p>
-        <h3 class="title">{{ model.selectedGitFolders ? model.selectedGitFolders.length : "0" }}/{{ model.gitFolders ? model.gitFolders.length : "0"}}<small> Selected</small></h3>
+        <h3 class="title">{{model.selectedGitFolders.length}}/{{model.gitFolders.length}}<small>Selected</small></h3>
         <div ng-if="model.loading">
             <div>
                 <md-progress-linear md-mode="indeterminate"></md-progress-linear>
@@ -12,15 +12,18 @@
         </div>
         <md-list ng-if="!model.loading">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="form-group label-floating">
                         <label class="control-label">Filter By</label>
                         <input type="text" ng-model="model.filter" class="form-control">
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <md-button class="md-fab fa fa-inverse fa-folder-open form-control" style="color: white" ng-click="model.OpenDirectory()">
                         <md-tooltip>Add Git Repo(s)</md-tooltip>
+                    </md-button>
+                    <md-button class="md-fab fa fa-check-square-o form-control" style="color: white" ng-click="model.SelectAll()">
+                        <md-tooltip>Select All</md-tooltip>
                     </md-button>
                     <md-button class="md-fab fa fa-refresh form-control" style="color: white" ng-click="model.refreshGit()">
                         <md-tooltip>Refresh All</md-tooltip>
@@ -28,42 +31,24 @@
                 </div>
             </div>
             <div class="row">
-                <!--<table class="table">
-                    <tbody>
-                        <tr ng-repeat="gitFolder in model.gitFolders | filter: model.filter">
-                            <td>
-                                <md-checkbox ng-model="gitFolder.selected" ng-clicked="gitFolder.selected" ng-click="model.AddGitFolders(gitFolder)">
-                            </td>
-                             <td>
-                                 {{ gitFolder.file.name }}
-                            </td>
-                            <td>
-                                 {{ gitFolder.repoInfo.branch }}
-                            </td>
-                             <td>
-                                 {{ gitFolder.repoInfo.root }}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>-->
-                 <md-list-item ng-repeat="gitFolder in model.gitFolders | filter: model.filter" class="md-3-line">
-                <div class="md-list-item-text text-left" layout="column">
-                    <md-checkbox ng-model="gitFolder.selected" ng-clicked="gitFolder.selected" ng-click="model.AddGitFolders(gitFolder)">
-                        <h3 class="text-left">
-                            <span style="font-weight:bold"> {{ gitFolder.file.name }} </span>
-                            <span> {{ gitFolder.repoInfo.branch }} </span>
-                        </h3>
-                        <h4 class="text-left"> {{ gitFolder.repoInfo.root }} </h4>
-                        <p class="text-left">
-                            <span style="font-style: italic"> {{ gitFolder.repoInfo.authorDate | date : format }} </span>
-                            <span> {{ gitFolder.repoInfo.commitMessage }} </span>
-                        </p>
-                        <md-button class="md-secondary">
-                            <md-tooltip>Refresh Selected</md-tooltip>
-                            <md-icon aria-label="Reload" class="ti-reload" ng-click="model.refreshSelectedGit(gitFolder)"></md-icon>
-                        </md-button>
-                </div>
-            </md-list-item>
+                <md-list-item ng-repeat="gitFolder in model.gitFolders | filter: model.filter" class="md-3-line">
+                    <div class="md-list-item-text text-left" layout="column">
+                        <md-checkbox ng-model="gitFolder.selected" ng-clicked="gitFolder.selected" ng-click="model.AddGitFolders(gitFolder)">
+                            <h3 class="text-left">
+                                <span style="font-weight:bold"> {{ gitFolder.file.name }} </span>
+                                <span> {{ gitFolder.repoInfo.branch }} </span>
+                            </h3>
+                            <h4 class="text-left"> {{ gitFolder.repoInfo.root }} </h4>
+                            <p class="text-left">
+                                <span style="font-style: italic"> {{ gitFolder.repoInfo.authorDate | date : format }} </span>
+                                <span> {{ gitFolder.repoInfo.commitMessage }} </span>
+                            </p>
+                            <md-button class="md-secondary">
+                                <md-tooltip>Refresh Selected</md-tooltip>
+                                <md-icon aria-label="Reload" class="ti-reload" ng-click="model.refreshSelectedGit(gitFolder)"></md-icon>
+                            </md-button>
+                    </div>
+                </md-list-item>
             </div>
         </md-list>
     </div>

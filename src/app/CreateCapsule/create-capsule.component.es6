@@ -1,5 +1,5 @@
 const electron = window.require('electron').remote;
-const _ = require('lodash'); 
+const _ = require('lodash');
 
 export default {
     template: require("./create-capsule.html"),
@@ -14,6 +14,7 @@ export default {
 };
 
 createCapsuleController.inject = ['GitFolderInfoService'];
+
 function createCapsuleController($scope, GitFolderInfoService) {
     let model = this;
 
@@ -33,7 +34,7 @@ function createCapsuleController($scope, GitFolderInfoService) {
     model.refreshSelectedGit = function (gitFolder) {
         const newInfo = GitFolderInfoService.GetFileInfo(gitFolder.repoInfo.root);
         let info = model.gitFolders[model.gitFolders.indexOf(gitFolder)];
-        info.repoInfo = newInfo.repoInfo; 
+        info.repoInfo = newInfo.repoInfo;
         info.config = newInfo.config;
         info.file = newInfo.file;
     }
@@ -45,19 +46,29 @@ function createCapsuleController($scope, GitFolderInfoService) {
             properties: ["openDirectory"]
         }, (filePath) => {
             if (filePath) {
-                debugger;
                 let gitFolder = GitFolderInfoService.GetGitFolders(filePath[0]);
-                this.gitFolders = this.gitFolders == true ? this.gitFolders : []; 
+                this.gitFolders = this.gitFolders == true ? this.gitFolders : [];
                 model.gitFolders = this.gitFolders.concat.apply(gitFolder);
                 model.gitFolders.sort((a, b) => {
                     let current = a.file.name.toLowerCase();
                     let next = b.file.name.toLowerCase();
-                    return current < next ? -1 : current > next ? 1 : 0; 
+                    return current < next ? -1 : current > next ? 1 : 0;
                 })
             }
             model.loading = false;
             $scope.$apply();
         });
+    }
+
+    model.SelectAll = function () {
+        model.selectedGitFolders = [];
+        model.selectedGitFolders = model.gitFolders.map(el => {
+            el.selected = true;
+            return el;
+        });
+        model.onGitFoldersChange({
+            folders: model.selectedGitFolders
+        })
     }
 
     model.AddGitFolders = function (gitFolder) {

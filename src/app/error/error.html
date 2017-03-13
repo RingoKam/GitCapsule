@@ -1,0 +1,18 @@
+<md-content flex>
+    <md-card>
+        <md-card-title>
+            <md-card-title-text>
+                <h1>
+                    ops! an error has occurred :(
+                </h1>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <pre> {{ model.error | json }} </pre>
+            <p> Please report your errors to : https://github.com/RingoKam/GitCapsules/issues </p>
+        </md-card-content>
+        <md-card-actions>
+            <md-button aria-label="home" ng-click="model.goHome()"> Back </md-button>
+        </md-card-actions>
+    </md-card>
+</md-content>

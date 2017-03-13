@@ -19,7 +19,7 @@ export default {
 
 createShController.inject = ['$state'];
 
-function createShController($state, $mdDialog) {
+function createShController($scope, $state, $mdDialog) {
     var model = this;
 
     model.$onInit = function () {
@@ -39,6 +39,7 @@ function createShController($state, $mdDialog) {
             properties: ["openDirectory"]
         }, (filePath) => {
             this.outputLocation = filePath;
+            $scope.$apply(); 
         })
     }
 

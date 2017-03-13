@@ -21,6 +21,8 @@ import createSh from './CreateSh/create-sh.component';
 import history from './history/history.component';
 import capsule from './capsule/capsule.component';
 import capsuleNameFilter from './home/home-capsulename.filter';
+import error from './error/error.component';
+import errorState from './error/error.state';
 
 // import manage from './manage/manage.component';
 import {
@@ -48,7 +50,8 @@ angular
         $stateProvider
             .state('home', homeState)
             .state("create", createState)
-
+            .state("error", errorState);
+            
         $urlRouterProvider.otherwise('/home')
     }])
     .component("root", root)
@@ -59,6 +62,7 @@ angular
     .component("history", history)
     .component("createCapsule", createCapsule)
     .component("createSh", createSh)
+    .component("error", error)
     .filter("capsulenamefilter", capsuleNameFilter)
     // .component("manage", manage)
     // .component("error", error)
