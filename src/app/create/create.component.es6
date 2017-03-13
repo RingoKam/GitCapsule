@@ -2,7 +2,8 @@ const dataStore = require('../library/datastore');
 
 export default {
     bindings: {
-        capsuleid: "<"
+        capsuleid: "<",
+        gitFolders: "<"
     },
     template: require("./create.html"),
     controller: createController,
@@ -15,14 +16,7 @@ function createController() {
     model.$onInit = function ($scope) {
         model.capsuleid = this.capsuleid;
         model.selectedGitFolders = [];
-        model.gitFolders = [];
-        if (model.capsuleid) {
-            dataStore.find({
-                _id: this.capsuleid
-            }).then((data) => {
-                model.gitFolders = data[0].gitFiles;
-            });
-        }
+        model.gitFolders = this.gitFolders && this.gitFolders.length > 0 ? this.gitFolders[0].gitFiles : {}; 
     }
 
     model.updateGitFolders = (folders) => {

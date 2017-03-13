@@ -5,9 +5,9 @@
             <p>All</p>
         </a>
     </li>
-    <li ng-repeat="capsulename in model.capsuleNames">
-        <a ng-click="model.changeState(capsulename)">
-            <i class="fa fa-git-square"></i>
+    <li ng-repeat="capsulename in model.capsuleNames" ng-click="model.changeState(capsulename)">
+        <a>
+            <i class="icon-gitcapsule"></i>
             <p>{{capsulename.name}}</p>
         </a>
     </li>

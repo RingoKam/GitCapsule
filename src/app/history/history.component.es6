@@ -1,5 +1,5 @@
 const capsuleNameStore = require('../library/capsule_name_store');
-
+const remote = require('electron').remote
 
 export default {
     template: require("./history.html"),

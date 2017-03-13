@@ -1,6 +1,6 @@
 <div class="">
     <div class="container-fluid">
-        <pre> {{ model.capsulename | json }} </pre>
+        <!--<pre> {{ model.capsulename | json }} </pre>-->
         <!--<div heatmap chart-data="model.heatMapData"></div>-->
         <div class="card" ng-repeat="collection in model.capsuleCollections | capsulenamefilter:model.capsulename">
             <!--<div class="card" ng-repeat="collection in model.capsuleCollections | filter:{'name': model.capsulename}:true">-->
@@ -8,8 +8,11 @@
                 <h4 class="title"> {{ collection.name }} </h4>
                 <p class="category">Number of Bash Files: {{collection.capsules.length}} </p>
             </div>
-            <div class="card-content table-responsive" ng-if="collection.show">
-                <div heatmap chart-data="model.heatMapData"></div>
+            <div class="card-content table-responsive" ng-if="!collection.hide && collection.capsules.length > 0">
+                <div heatmap chart-data="collection.heatmap" filter="collection.filter"></div>
+                <div class="form-group">
+                    <input type="text" ng-model="collection.filter" placeholder="Filter..." class="form-control" />
+                </div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -21,23 +24,24 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="capsule in collection.capsules">
+                        <tr ng-repeat="capsule in collection.capsules | filter:collection.filter">
                             <td>{{capsule.fileName}}</td>
                             <td>{{capsule.createdOn}}</td>
                             <td>{{capsule.numberOfProject}}</td>
                             <td>{{capsule.comment}}</td>
                             <td>
-                                <button class="btn btn-success">Create</button>
+                                <button class="btn btn-success" ng-click="model.changeState(capsule.id)">Create</button>
                                 <button class="btn btn-info" ng-click="model.ShowDetail(capsule.json)">Detail</button>
-                                <button class="btn btn-danger">Delete</button>
+                                <button class="btn btn-danger" ng-click="model.Delete(capsule.id)">Delete</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="card-footer">
-                <p class="stats text-center" ng-click="collection.show = !collection.show">
-                    <i class="fa fa-arrow-down"></i> Show
+                <p class="stats text-center" ng-show="collection.capsules.length > 0" ng-click="collection.hide = !collection.hide">
+                    <i ng-if="collection.hide" class="fa fa-chevron-circle-down"> detail </i>
+                    <i ng-if="!collection.hide" class="fa fa-chevron-circle-up"> hide </i>
                 </p>
             </div>
         </div>

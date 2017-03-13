@@ -2,6 +2,7 @@ const dataStore = require('../library/datastore');
 const capsuleNameStore = require('../library/capsule_name_store');
 const remote = require('electron').remote
 
+import _ from 'lodash'
 import Q from 'q';
 
 export default {
@@ -45,11 +46,11 @@ function capsuleController($state, $rootScope, $scope, $mdDialog) {
                 return cap.capsule
             }).filter((name, index, array) => {
                 return array.indexOf(name) === index
-            });
+            }).sort();
             let capsules = capsuleNames.map((name) => {
-                let collection = data.filter((d) => {
+                let collection = _.sortBy(data.filter((d) => {
                     return d.capsule === name
-                })
+                }), (o) => o.createdOn).reverse(); 
                 return {
                     name,
                     collection

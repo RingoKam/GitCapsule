@@ -306,7 +306,7 @@ exports.calendarHeatmap = function () {
     }
 
     var daysOfChart = chart.data().map(function (day) {
-      return day.date.toDateString();
+      return day.date.toString();
     });
 
     dayRects.filter(function (d) {

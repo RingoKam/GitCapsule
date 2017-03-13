@@ -1,20 +1,20 @@
-<div class="sidebar" data-color="purple" data-image="../assets/img/sidebar-1.jpg">
+<div class="sidebar" data-color="red" data-image="../assets/img/sidebar-1.jpg">
     <div class="sidebar-wrapper">
         <md-tabs md-stretch-tabs="always" layout-fill class="md-primary">
             <md-tab id="tab1" ui-sref="home">
-                <md-tab-label><span class="">History</span></md-tab-label>
+                <md-tab-label><span class="">Manage</span></md-tab-label>
                 <md-tab-body>
                     <history capsule-names="model.CapsuleName"></history>
                 </md-tab-body>
             </md-tab>
             <md-tab id="tab2" ui-sref="create">
-                <md-tab-label><span class="">Capsules</span></md-tab-label>
+                <md-tab-label><span class="">Create</span></md-tab-label>
                 <md-tab-body>
                     <capsule capsules="model.Capsules" on-update-capsule-name="model.onUpdateCapules"></capsule>
                 </md-tab-body>
             </md-tab>
     </div>
 </div>
-<div class="main-panel">
+<div class="main-panel" data-color="purple">
     <ui-view ng-animate="'view'"></ui-view>
 </div>

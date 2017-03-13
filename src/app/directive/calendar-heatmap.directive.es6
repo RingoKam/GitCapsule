@@ -13,6 +13,7 @@ function heatmap($window) {
         restrict: 'A',
         scope: {
             chartData: '=',
+            filter: '='
         }
     };
     return directive;
@@ -22,9 +23,10 @@ function heatmap($window) {
             .data(scope.chartData)
             .selector(element[0])
             .tooltipEnabled(true)
-            .colorRange(['#f4f7f7', '#79a8a9'])
+            .colorRange(['#FFF5EE', '#FF6700'])
             .onClick(function (data) {
-                console.log('data', data);
+                scope.filter = moment(data.date).format("YYYY-MM-DD")
+                scope.$apply(); 
             });
         heatmap();
     }

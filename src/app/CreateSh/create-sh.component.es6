@@ -69,7 +69,7 @@ function createShController($state, $mdDialog) {
                         name: model.name,
                         gitFiles: model.gitFolders,
                         comment: model.comment,
-                        createdOn: moment()
+                        createdOn: moment().format("YYYY-MM-DD HH:mm:ss")
                     }
                     var promise = dataStore.insertdb(record);
                     let myNotification = new Notification('Success!', {

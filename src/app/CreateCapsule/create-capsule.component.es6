@@ -22,11 +22,8 @@ function createCapsuleController($scope, GitFolderInfoService) {
         model.onGitFoldersChange = this.onGitFoldersChange;
         model.selectedGitFolders = this.selectedGitFolders;
     };
-
     model.$onChanges = function (changesObj) {};
-
     model.$onDestory = function () {};
-
     model.refreshGit = function () {
         model.gitFolders = model.gitFolders.map((m) => {
             return GitFolderInfoService.GetFileInfo(m.repoInfo.root);

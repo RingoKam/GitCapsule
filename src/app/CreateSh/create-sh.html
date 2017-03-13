@@ -2,19 +2,21 @@
     <div class="card-header" data-background-color="red">
         <i class="material-icons fa fa-terminal"></i>
     </div>
-    <div class="card-content">
+    <div class="card-content" data-color="red">
         <p class="category">Create</p>
         <h3 class="title">Bash Script</h3>
-        <form>
+        <form> 
             <div class="row">
                 <div class="col-md-12">
-                    <label class="control-label">Capsule Collection</label>
-                    <md-select ng-model="model.capsuleName" class="form-control">
-                        <md-option ng-value=""><em>None</em></md-option>
-                        <md-option ng-repeat="name in model.capsuleNames" ng-value="name">
-                            {{name}}
-                        </md-option>
-                    </md-select>
+                    <div class="form-group label-floating">
+                        <label class="control-label">Capsule</label>
+                        <md-select ng-model="model.capsuleName" class="form-control">
+                            <label class="">Save to selected capsule Collection</label>
+                            <md-option ng-repeat="name in model.capsuleNames" ng-value="name">
+                                {{name}}
+                            </md-option>
+                        </md-select>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -33,7 +35,14 @@
                     <input type="text" class="form-control" placeholder="Export Location" ng-model="model.outputLocation" disabled>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Comment</label>
+                        <textarea class="form-control" rows="5"></textarea>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-12">
                     <md-chips ng-show="model.gitFolders.length > 0">
@@ -41,19 +50,11 @@
                     </md-chips>
                 </div>
             </div>
-
             <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label>Comment</label>
-                        <div class="form-group label-floating">
-                            <label class="control-label">Comment will appear script is ran</label>
-                            <textarea class="form-control" rows="5"></textarea>
-                        </div>
-                    </div>
+                <div class="text-center col-md-12">
+                    <button class="btn btn-danger" ng-click="model.exportSh()">Export</button>
                 </div>
             </div>
-            <button class="btn btn-primary" ng-click="model.exportSh()">Export</button>
             <div class="clearfix"></div>
         </form>
 
