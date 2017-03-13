@@ -4,7 +4,7 @@
     </div>
     <div class="card-content">
         <p class="category">Select Git Repos</p>
-        <h3 class="title">{{model.selectedGitFolders.length}}/{{model.gitFolders.length}}<small> Selected</small></h3>
+        <h3 class="title">{{ model.selectedGitFolders ? model.selectedGitFolders.length : "0" }}/{{ model.gitFolders ? model.gitFolders.length : "0"}}<small> Selected</small></h3>
         <div ng-if="model.loading">
             <div>
                 <md-progress-linear md-mode="indeterminate"></md-progress-linear>

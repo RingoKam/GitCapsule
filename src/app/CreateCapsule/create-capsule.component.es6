@@ -45,7 +45,9 @@ function createCapsuleController($scope, GitFolderInfoService) {
             properties: ["openDirectory"]
         }, (filePath) => {
             if (filePath) {
+                debugger;
                 let gitFolder = GitFolderInfoService.GetGitFolders(filePath[0]);
+                this.gitFolders = this.gitFolders == true ? this.gitFolders : []; 
                 model.gitFolders = this.gitFolders.concat.apply(gitFolder);
                 model.gitFolders.sort((a, b) => {
                     let current = a.file.name.toLowerCase();

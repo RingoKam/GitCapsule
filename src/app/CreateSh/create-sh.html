@@ -5,17 +5,17 @@
     <div class="card-content" data-color="red">
         <p class="category">Create</p>
         <h3 class="title">Bash Script</h3>
-        <form> 
+        <form>
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group label-floating">
                         <label class="control-label">Capsule</label>
-                        <md-select ng-model="model.capsuleName" class="form-control">
+                        <select ng-model="model.capsuleName" class="form-control">
                             <label class="">Save to selected capsule Collection</label>
-                            <md-option ng-repeat="name in model.capsuleNames" ng-value="name">
+                            <option ng-repeat="name in model.capsuleNames" ng-value="name">
                                 {{name}}
-                            </md-option>
-                        </md-select>
+                            </option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                 <div class="col-md-12">
                     <div class="form-group label-floating">
                         <label class="control-label">File Name</label>
-                        <input type="text" class="form-control" ng-model="model.name">
+                        <input type="text" class="form-control text-left" ng-model="model.name">
                     </div>
                 </div>
             </div>
@@ -45,9 +45,12 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <md-chips ng-show="model.gitFolders.length > 0">
-                        <md-chip ng-repeat="git in model.gitFolders"> {{ git.file.name }}</md-chip>
-                    </md-chips>
+                    <div class="form-group label-floating">
+                        <label class="control-label">  {{model.gitFolders && model.gitFolders.length > 0 ? "Selected Repo(s)" + model.gitFolders.length : "Please select git repo(s)" }} </label>
+                        <md-chips ng-show="model.gitFolders.length > 0">
+                            <md-chip ng-repeat="git in model.gitFolders"> {{ git.file.name }}</md-chip>
+                        </md-chips>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -57,6 +60,5 @@
             </div>
             <div class="clearfix"></div>
         </form>
-
     </div>
 </div>
