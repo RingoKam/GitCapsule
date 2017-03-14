@@ -8,7 +8,7 @@ module.exports = {
     entry: ['./app/app-module'],
     //bundle file output location
     output: {
-        path: path.resolve('build/js/'),
+        path: path.resolve('compiled/js/'),
         filename: "bundle.js"
     },
     devServer: {

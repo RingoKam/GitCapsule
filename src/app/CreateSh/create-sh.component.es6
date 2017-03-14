@@ -19,7 +19,7 @@ export default {
 
 createShController.inject = ['$state'];
 
-function createShController($scope, $state, $mdDialog) {
+function createShController($state, $mdDialog, $scope) {
     var model = this;
 
     model.$onInit = function () {
@@ -39,7 +39,7 @@ function createShController($scope, $state, $mdDialog) {
             properties: ["openDirectory"]
         }, (filePath) => {
             this.outputLocation = filePath;
-            $scope.$apply(); 
+            $scope.$apply();
         })
     }
 
@@ -76,7 +76,9 @@ function createShController($scope, $state, $mdDialog) {
                     let myNotification = new Notification('Success!', {
                         body: `${model.name} created in ${model.outputLocation}`
                     });
-                    promise.then(remote.getCurrentWindow().reload());
+                    promise.then(() => {
+                        remote.getCurrentWindow().reload();
+                    });
                 });
             } else {
                 $mdDialog.show(
@@ -94,6 +96,5 @@ function createShController($scope, $state, $mdDialog) {
                 "error": arguments
             });
         }
-
     }
 }

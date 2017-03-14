@@ -14,19 +14,37 @@ historyController.inject = ['$state'];
 
 function historyController($state, $rootScope, $scope, $mdDialog) {
 
-    var model = this;
-    
+    var model = this;   
+
     model.$onInit = function () {
-        model.capsuleNames = this.capsuleNames;
+
     };
 
-    model.changeState = function (capsuleName) {
-        // model.capsuleNames = model.capsuleNames.map(e => {
-        //     e.selected = false;
-        //     return e;
-        // })
+    model.$onChanges = function (obj) {
+        model.capsules = this.capsuleNames && this.capsuleNames.length > 0 ? this.capsuleNames : [];
+        model.capsules = this.capsuleNames.map((m) => {
+            return {
+                name: m.name,
+                goto: () => model.changeState(m.name),
+                selected: false
+            }
+        });
+        model.capsules.unshift({
+            "name": "All",
+            "selected": true,
+            "goto": () => model.changeState("All")
+        });
+    };
+
+    model.changeState = function (capsule) {
+        model.capsules = model.capsules.map(e => {
+            e.selected = false;
+            return e;
+        });
+        const index = _.findIndex(model.capsules, (o) => { return o.name === capsule});
+        if(index >= 0)model.capsules[index].selected = true; 
         $state.go("home", {
-            "capsulename": capsuleName ? capsuleName.name : "" 
+            "capsulename": capsule !== "All" ? capsule : ""
         });
     }
 

@@ -1,14 +1,14 @@
 <ul class="nav">
-    <li ng-click="model.changeState()">
+    <!--<li ng-click="model.changeState()">
         <a>
             <i class="fa fa-bars"></i>
             <p>All</p>
         </a>
-    </li>
-    <li ng-repeat="capsulename in model.capsuleNames" ng-click="model.changeState(capsulename)">
+    </li>-->
+    <li ng-repeat="capsule in model.capsules" ng-click="capsule.goto()" ng-class="{'active':capsule.selected}">
         <a>
             <i class="fa fa-code-fork"></i>
-            <p>{{capsulename.name}}</p>
+            <p>{{capsule.name}}</p>
         </a>
     </li>
     <li ng-click="model.PromptNewCapsule()">
