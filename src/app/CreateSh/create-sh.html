@@ -12,6 +12,9 @@
                         <label class="control-label">Capsule</label>
                         <select ng-model="model.capsuleName" class="form-control">
                             <label class="">Save to selected capsule Collection</label>
+                            <option selected="selected" ng-value="">
+                                Untitled (default if none selected)
+                            </option>
                             <option ng-repeat="name in model.capsuleNames" ng-value="name">
                                 {{name}}
                             </option>

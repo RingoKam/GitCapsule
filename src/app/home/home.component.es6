@@ -60,7 +60,7 @@ function ManageController($state, $scope, $mdDialog) {
             .cancel('Cancel');
 
         $mdDialog.show(confirm).then(function () {
-            remote.getCurrentWindow().reload();
+            Delete(id); 
         });
     }
 
@@ -122,10 +122,11 @@ function ManageController($state, $scope, $mdDialog) {
     }
 
     function Delete(id) {
+        debugger;
         dataStore.remove({
             _id: id
         }).then(() => {
-            console.log("Removed");
+remote.getCurrentWindow().reload();
         })
     }
 }

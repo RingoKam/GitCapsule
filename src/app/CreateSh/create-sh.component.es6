@@ -66,7 +66,7 @@ function createShController($scope, $state, $mdDialog) {
                 writer.end("Summary");
                 writer.on('finish', () => {
                     let record = {
-                        capsule: model.capsuleName ? model.capsuleName : "Other",
+                        capsule: model.capsuleName ? model.capsuleName : "Untitled",
                         name: model.name,
                         gitFiles: model.gitFolders,
                         comment: model.comment,
