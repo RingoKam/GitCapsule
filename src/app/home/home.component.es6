@@ -24,11 +24,10 @@ function ManageController($state, $scope, $mdDialog) {
     model.$onInit = function () {
         this.capsulename;
         this.dbRecords;
-        this.dbCapsuleNames;
+        this.dbCapsuleNames = this.dbCapsuleNames;
         model.capsuleCollections = BuildTableData(this.dbRecords, this.dbCapsuleNames);
         model.version = pkg.version;
     };
-
     model.$onChanges = function (changesObj) {};
     model.$onDestory = function () {};
     model.changeState = (id) => {
@@ -60,7 +59,7 @@ function ManageController($state, $scope, $mdDialog) {
             .cancel('Cancel');
 
         $mdDialog.show(confirm).then(function () {
-            Delete(id); 
+            Delete(id);
         });
     }
 
@@ -100,7 +99,7 @@ function ManageController($state, $scope, $mdDialog) {
 
     function BuildTableData(capsules, capsuleNames) {
         return capsuleNames.map((capsuleName) => {
-            const capsulesByName = _.sortBy(capsules.filter((el) => el.capsule == capsuleName.name), (o) => o.createdOn).reverse(); 
+            const capsulesByName = _.sortBy(capsules.filter((el) => el.capsule == capsuleName.name), (o) => o.createdOn).reverse();
             return {
                 name: capsuleName.name,
                 heatmap: BuildHeatMapData(capsulesByName),
@@ -124,7 +123,7 @@ function ManageController($state, $scope, $mdDialog) {
         dataStore.remove({
             _id: id
         }).then(() => {
-remote.getCurrentWindow().reload();
+            remote.getCurrentWindow().reload();
         })
     }
 }

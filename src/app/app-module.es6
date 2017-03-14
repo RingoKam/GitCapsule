@@ -3,8 +3,9 @@ import '../assets/js/material.min.js';
 import '../assets/js/chartist.min.js';
 import '../assets/js/bootstrap-notify.js';
 import '../assets/js/material-dashboard.js';
+import 'angular-utils-pagination'
 
-import angular from 'angular';
+// import angular from 'angular';
 import 'angular-material/angular-material.css';
 import 'font-awesome/css/font-awesome.css';
 import uiRouter from "angular-ui-router";
@@ -34,7 +35,8 @@ import {
 angular
     .module('app', [
         angularMaterial,
-        uiRouter
+        uiRouter,
+        'angularUtils.directives.dirPagination'
     ])
     .config(['$mdThemingProvider', '$stateProvider', '$urlRouterProvider', function ($mdThemingProvider, $stateProvider, $urlRouterProvider) {
 
