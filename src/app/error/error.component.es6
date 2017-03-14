@@ -3,7 +3,7 @@ export default {
     controller: ControllerController,
     controllerAs: "model",
     bindings: {
-        error: '<',
+        error: '<'
     }
 }
 

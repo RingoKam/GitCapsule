@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/RingoKam/BuiltToolGit.git"
+    "url": "https://github.com/RingoKam/GitCapsules"
   },
   "author": "Ringo Kam",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/RingoKam/BuiltToolGit/issues"
+    "url": "https://github.com/RingoKam/GitCapsules/issues"
   },
-  "homepage": "https://github.com/RingoKam/BuiltToolGit",
+  "homepage": "https://github.com/RingoKam/GitCapsules",
   "devDependencies": {
     "autoprefixer": "^6.6.1",
     "autoprefixer-loader": "^3.2.0",
@@ -35,6 +35,11 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.14.0"
+  },
+  "build": {
+    "win": {
+      "iconUrl": ""
+    }
   },
   "dependencies": {
     "angular": "^1.6.1",
