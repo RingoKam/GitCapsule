@@ -35,8 +35,8 @@
                     <div class="md-list-item-text text-left" layout="column">
                         <md-checkbox ng-model="gitFolder.selected" ng-clicked="gitFolder.selected" ng-click="model.AddGitFolders(gitFolder)">
                             <h3 class="text-left">
-                                <span style="font-weight:bold"> {{ gitFolder.file.name }} </span>
-                                <span> {{ gitFolder.repoInfo.branch }} </span>
+                                <span style="font-weight:bold"> {{ gitFolder.file.base }} </span>
+                                <span> {{ gitFolder.repoInfo.branch ? gitFolder.repoInfo.branch : "Detached:" + gitFolder.repoInfo.abbreviatedSha }} </span>
                             </h3>
                             <h4 class="text-left"> {{ gitFolder.repoInfo.root }} </h4>
                             <p class="text-left">

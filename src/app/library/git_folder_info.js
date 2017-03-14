@@ -11,12 +11,14 @@ function readDirectory(directory, gitFolder) {
         const config = parseGit.sync({
             path: directory + "/.git/config"
         });
-        const file = path.parse(directory);
-        gitFolder.push({
-            "file": file,
-            "repoInfo": repoInfo,
-            "config": config
-        });
+        if (config["remote \"origin\""] && config["remote \"origin\""].url.length > 0) {
+            const file = path.parse(directory);
+            gitFolder.push({
+                "file": file,
+                "repoInfo": repoInfo,
+                "config": config
+            });
+        }
     } else if (fs.lstatSync(directory).isDirectory()) {
         var files = fs.readdirSync(directory);
         for (let i = 0; i < files.length; i++) {

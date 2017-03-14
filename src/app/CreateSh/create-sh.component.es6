@@ -90,7 +90,7 @@ function createShController($scope, $state, $mdDialog) {
                 );
             }
         } catch (error) {
-            $state.go("root.error", {
+            $state.go("error", {
                 "error": error
             });
         }
