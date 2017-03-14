@@ -1,4 +1,6 @@
 const electron = window.require('electron').remote;
+let gitFolderInfo = require('../library/git_folder_info');
+
 const _ = require('lodash');
 
 export default {
@@ -25,13 +27,16 @@ function createCapsuleController($scope, GitFolderInfoService) {
     };
     model.$onChanges = function (changesObj) {};
     model.$onDestory = function () {};
+
     model.refreshGit = function () {
+        model.UnSelectAll();
         model.gitFolders = model.gitFolders.map((m) => {
             return GitFolderInfoService.GetFileInfo(m.repoInfo.root);
         })
     };
 
     model.refreshSelectedGit = function (gitFolder) {
+        model.UnSelectAll();
         const newInfo = GitFolderInfoService.GetFileInfo(gitFolder.repoInfo.root);
         let info = model.gitFolders[model.gitFolders.indexOf(gitFolder)];
         info.repoInfo = newInfo.repoInfo;
@@ -46,13 +51,16 @@ function createCapsuleController($scope, GitFolderInfoService) {
             properties: ["openDirectory"]
         }, (filePath) => {
             if (filePath) {
-                let gitFolder = GitFolderInfoService.GetGitFolders(filePath[0]);
-                this.gitFolders = this.gitFolders == true ? this.gitFolders : [];
-                model.gitFolders = this.gitFolders.concat.apply(gitFolder);
-                model.gitFolders.sort((a, b) => {
-                    let current = a.file.name.toLowerCase();
-                    let next = b.file.name.toLowerCase();
-                    return current < next ? -1 : current > next ? 1 : 0;
+                let git = GitFolderInfoService.GetGitFolders(filePath[0]);
+                model.gitFolders = model.gitFolders && model.gitFolders.length > 0 ? model.gitFolders : [];
+                git.map((e) => {
+                    if (model.gitFolders.filter((ee) => {
+                            if (e.file.dir + e.repoInfo.sha === ee.file.dir + ee.repoInfo.sha) {
+                                return true;
+                            }
+                        }).length === 0) {
+                        model.gitFolders = _.concat(model.gitFolders, e);
+                    }
                 })
             }
             model.loading = false;
@@ -62,13 +70,25 @@ function createCapsuleController($scope, GitFolderInfoService) {
 
     model.SelectAll = function () {
         model.selectedGitFolders = [];
-        model.selectedGitFolders = model.gitFolders.map(el => {
+        model.gitFolders = model.gitFolders.map(el => {
             el.selected = true;
+            return el;
+        });
+        model.selectedGitFolders = model.gitFolders;
+        model.onGitFoldersChange({
+            folders: model.selectedGitFolders
+        });
+    }
+
+    model.UnSelectAll = function () {
+        model.selectedGitFolders = [];
+        model.gitFolders = model.gitFolders.map(el => {
+            el.selected = false;
             return el;
         });
         model.onGitFoldersChange({
             folders: model.selectedGitFolders
-        })
+        });
     }
 
     model.AddGitFolders = function (gitFolder) {

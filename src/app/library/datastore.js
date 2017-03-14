@@ -35,10 +35,8 @@ exports.remove = (obj) => {
     var deferred = Q.defer();
     db.remove(obj, {}, (err, numRemoved) => {
         if (err) {
-            debugger;
             deferred.reject(new Error(err));
         } else {
-            debugger;
             deferred.resolve(numRemoved);
         }
     });

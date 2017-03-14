@@ -3,8 +3,6 @@ const path = require('path');
 const getRepoInfo = require('git-repo-info');
 const parseGit = require('parse-git-config');
 
-let Folders = [];
-
 function readDirectory(directory, gitFolder) {
     const repoInfo = getRepoInfo(directory);
     if (repoInfo.sha) {
@@ -47,6 +45,5 @@ exports.GetFileInfo = (directory) => {
 exports.GitFolders = (filePath) => {
     let gitFolder = [];
     readDirectory(filePath, gitFolder);
-    Folders = Folders.concat(gitFolder);
-    return Folders;
+    return gitFolder;
 }
