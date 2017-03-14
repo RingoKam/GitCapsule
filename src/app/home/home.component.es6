@@ -26,6 +26,11 @@ function ManageController($state, $scope, $mdDialog) {
         this.dbRecords;
         this.dbCapsuleNames = this.dbCapsuleNames;
         model.capsuleCollections = BuildTableData(this.dbRecords, this.dbCapsuleNames);
+        debugger;
+        if (model.capsulename && model.capsulename.length > 0) model.capsuleCollections = model.capsuleCollections.map(m => {
+            m.show = true;
+            return m; 
+        })
         model.version = pkg.version;
     };
     model.$onChanges = function (changesObj) {};

@@ -8,7 +8,7 @@
                 <h4 class="title"> {{ collection.name }} </h4>
                 <p class="category">Number of Bash Files: {{collection.capsules.length}} </p>
             </div>
-            <div class="card-content table-responsive" ng-if="collection.hide && collection.capsules.length > 0">
+            <div class="card-content table-responsive" ng-if="collection.show && collection.capsules.length > 0">
                 <div heatmap chart-data="collection.heatmap" filter="collection.filter"></div>
                 <div class="form-group">
                     <input type="text" ng-model="collection.filter" placeholder="Filter..." class="form-control" />
@@ -42,9 +42,9 @@
                 </div>
             </div>
             <div class="card-footer">
-                <p class="stats text-center" ng-show="collection.capsules.length > 0" ng-click="collection.hide = !collection.hide">
-                    <i ng-if="!collection.hide" class="fa fa-chevron-circle-down">  </i>
-                    <i ng-if="collection.hide" class="fa fa-chevron-circle-up">  </i>
+                <p class="stats text-center" ng-show="collection.capsules.length > 0" ng-click="collection.show = !collection.show">
+                    <i ng-if="!collection.show" class="fa fa-chevron-circle-down">  </i>
+                    <i ng-if="collection.show" class="fa fa-chevron-circle-up">  </i>
                 </p>
             </div>
         </div>
