@@ -65,7 +65,6 @@ function ManageController($state, $scope, $mdDialog) {
     }
 
     model.PromptNewCapsule = (ev) => {
-
         var confirm = $mdDialog.prompt()
             .title('New Capsule Collection')
             .textContent('Capsule are use to group multiple git repos together')
@@ -74,7 +73,6 @@ function ManageController($state, $scope, $mdDialog) {
             .targetEvent(ev)
             .ok('Confirm')
             .cancel('Cancel');
-
         $mdDialog.show(confirm).then(function (name) {
             if (name && name.length > 0) {
                 let promise = capsuleNameStore.insertdb({

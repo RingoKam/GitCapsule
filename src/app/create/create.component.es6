@@ -16,7 +16,7 @@ function createController() {
     model.$onInit = function ($scope) {
         model.capsuleid = this.capsuleid;
         model.selectedGitFolders = [];
-        model.gitFolders = this.gitFolders && this.gitFolders.length > 0 ? this.gitFolders[0].gitFiles : {}; 
+        model.gitFolders = this.gitFolders && this.gitFolders.length > 0 ? this.gitFolders[0].gitFiles : []; 
     }
 
     model.updateGitFolders = (folders) => {

@@ -91,7 +91,7 @@ function createShController($scope, $state, $mdDialog) {
             }
         } catch (error) {
             $state.go("error", {
-                "error": error
+                "error": arguments
             });
         }
 
