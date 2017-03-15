@@ -1,12 +1,12 @@
 {
   "name": "gitcapsules",
   "version": "0.0.1",
-  "description": "",
+  "description": "Redeploy your git env in a flash",
   "main": "app/main.js",
   "scripts": {
     "start": "electron .",
     "pack": "build --dir",
-    "dist": "build",
+    "dist": "webpack -p build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -39,8 +39,14 @@
     "webpack": "^1.14.0",
     "electron": "^1.4.14"
   },
-  "build": {
-    "win": {}
+ "build": {
+    "appId": "com.example.electron-boilerplate",
+    "files": [
+      "app/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "publish": null
   },
   "dependencies": {
     "angular": "^1.6.1",

@@ -33,6 +33,7 @@ releases
 data
 build
 oldsrc
+dist
 
 # Optional npm cache directory
 .npm
