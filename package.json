@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "pack": "build --dir",
-    "dist": "webpack -p build",
+    "dist": "build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

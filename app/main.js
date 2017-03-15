@@ -20,33 +20,33 @@ electron.app.on('ready', () => {
     mainWindow.on('closed', function () {
         mainWindow = null
     })
-    // menuTemplate = [{
-    //     label: "File",
-    //     submenu: [{
-    //         label: 'Add directory to current collection',
-    //         click: () => {
-    //             electron.dialog.showOpenDialog({
-    //                 title: "Select a folder",
-    //                 properties: ["openDirectory"]
-    //             }, (filePath) => {
-    //                 let gitFolder = gitFolderInfo.GitFolders(filePath[0]);`
-    //                 console.log(gitFolder);
-    //             });
-    //         }
-    //     }]
-    // }];
 
-    // let menu = electron.Menu.buildFromTemplate(menuTemplate)
+    menuTemplate = [{
+        label: "File",
+        submenu: [{
+            label: 'Add directory to current collection',
+            click: () => {
+                electron.dialog.showOpenDialog({
+                    title: "Select a folder",
+                    properties: ["openDirectory"]
+                }, (filePath) => {
+                    let gitFolder = gitFolderInfo.GitFolders(filePath[0]);
+                    console.log(gitFolder);
+                });
+            }
+        }]
+    }];
 
-    // menu.append(new electron.MenuItem({
-    //     role: "reload"
-    // }));
+    let menu = electron.Menu.buildFromTemplate(menuTemplate)
 
-    // menu.append(new electron.MenuItem({})
-    // //Dev Tools--- 
-    // menu.append(new electron.MenuItem({
-    //     role: "toggledevtools"
-    // }));
+    menu.append(new electron.MenuItem({
+        role: "reload"
+    }));
 
-    // electron.Menu.setApplicationMenu(menu);
+    //Dev Tools--- 
+    menu.append(new electron.MenuItem({
+        role: "toggledevtools"
+    }));
+
+    electron.Menu.setApplicationMenu(menu);
 });

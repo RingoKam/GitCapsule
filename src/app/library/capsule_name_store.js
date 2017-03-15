@@ -6,7 +6,7 @@ const remote = require('electron').remote;
 const app = remote.app;
 
 var db = new nedb({
-    filename: path.join(app.getAppPath(), '/data/capsuleName.db'),
+    filename: path.join(app.getPath('userData'), '/app/data/capsuleName.db'),
     autoload: true
 });
 

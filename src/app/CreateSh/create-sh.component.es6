@@ -53,7 +53,7 @@ function createShController($state, $mdDialog, $scope) {
                     return el;
                 });
 
-                var baseCode = fs.readFileSync("./app/assets/bashbase.sh");
+                //var baseCode = fs.readFileSync("./app/assets/bashbase.sh");
 
                 let {
                     fileName,
@@ -62,7 +62,7 @@ function createShController($state, $mdDialog, $scope) {
 
                 const writer = fs.createWriteStream(fileName);
 
-                writer.write(baseCode + codeFile);
+                writer.write(codeFile);
                 writer.end("Summary");
                 writer.on('finish', () => {
                     let record = {
