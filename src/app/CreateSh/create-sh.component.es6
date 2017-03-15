@@ -53,7 +53,7 @@ function createShController($state, $mdDialog, $scope) {
                     return el;
                 });
 
-                var baseCode = fs.readFileSync("./src/Assets/bashbase.sh");
+                var baseCode = fs.readFileSync("./app/assets/bashbase.sh");
 
                 let {
                     fileName,
@@ -78,6 +78,11 @@ function createShController($state, $mdDialog, $scope) {
                     });
                     promise.then(() => {
                         remote.getCurrentWindow().reload();
+                    }).catch((error) => {
+                        debugger;
+                        $state.go("error", {
+                            "error": JSON.stringify(error)
+                        });
                     });
                 });
             } else {
@@ -93,7 +98,7 @@ function createShController($state, $mdDialog, $scope) {
             }
         } catch (error) {
             $state.go("error", {
-                "error": arguments
+                "error": JSON.stringify(arguments)
             });
         }
     }

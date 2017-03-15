@@ -11,10 +11,12 @@ var db = new nedb({
 
 exports.insertdb = (doc) => {
     var deferred = Q.defer();
-    db.insert(doc, ((err) => {
-        deferred.reject(new Error(err));
-    }), (doc) => {
-        deferred.resolve(doc);
+    db.insert(doc, (err, newDocs) => {
+        if (err) {
+            deferred.reject(new Error(err))
+        } else {
+            deferred.resolve(doc)
+        };
     });
     return deferred.promise;
 }

@@ -1,8 +1,3 @@
-import '../assets/js/bootstrap.min.js';
-import '../assets/js/material.min.js';
-import '../assets/js/chartist.min.js';
-import '../assets/js/bootstrap-notify.js';
-import '../assets/js/material-dashboard.js';
 import 'angular-utils-pagination'
 
 // import angular from 'angular';
