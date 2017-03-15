@@ -49,7 +49,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group label-floating">
-                        <label class="control-label">  {{model.gitFolders && model.gitFolders.length > 0 ? "Selected Repo(s)" + model.gitFolders.length : "Please select git repo(s)" }} </label>
+                        <label class="control-label">  {{model.gitFolders && model.gitFolders.length > 0 ? "Selected " + model.gitFolders.length + " Repo(s)" : "Please select git repo(s)" }} </label>
                         <md-chips ng-show="model.gitFolders.length > 0">
                             <md-chip ng-repeat="git in model.gitFolders"> {{ git.file.name }}</md-chip>
                         </md-chips>
