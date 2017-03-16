@@ -57,4 +57,4 @@ Open bash file. Press enter. wola! Bash will...
 
 ## Recreate or Update Bash
 ![ManageScreen](https://github.com/RingoKam/GitCapsules/blob/master/screenshots/recreate.gif)
-Select bash script you wish to update/re-create. Click on the refresh button. It will refresh and grab current commit you are on. 
+Select bash script you wish to update/re-create. Click on the refresh button. It will refresh and grab current commit you are on. Follow [step2 and step3 from then.](#select-git-repos)
