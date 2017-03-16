@@ -65,26 +65,29 @@ function createShController($state, $mdDialog, $scope) {
                 writer.write(codeFile);
                 writer.end("Summary");
                 writer.on('finish', () => {
-                    let record = {
-                        capsule: model.capsuleName ? model.capsuleName : "Untitled",
-                        name: model.name,
-                        gitFiles: model.gitFolders,
-                        comment: model.comment,
-                        createdOn: moment().format("YYYY-MM-DD HH:mm:ss")
-                    }
-                    var promise = dataStore.insertdb(record);
                     let myNotification = new Notification('Success!', {
                         body: `${model.name} created in ${model.outputLocation}`
                     });
-                    promise.then(() => {
-                        remote.getCurrentWindow().reload();
-                    }).catch((error) => {
-                        debugger;
-                        $state.go("error", {
-                            "error": JSON.stringify(error)
+                    if (model.capsuleName != null) {
+                        let record = {
+                            capsule: model.capsuleName,
+                            name: model.name,
+                            gitFiles: model.gitFolders,
+                            comment: model.comment,
+                            createdOn: moment().format("YYYY-MM-DD HH:mm:ss")
+                        }
+                        let promise = dataStore.insertdb(record);
+                        promise.then(() => {
+                            remote.getCurrentWindow().reload();
+                        }).catch((error) => {
+                            $state.go("error", {
+                                "error": JSON.stringify(error)
+                            });
                         });
-                    });
-                });
+                    } else {
+                        remote.getCurrentWindow().reload();
+                    }
+                })
             } else {
                 $mdDialog.show(
                     $mdDialog.alert()

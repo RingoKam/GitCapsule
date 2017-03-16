@@ -13,7 +13,7 @@
                         <select ng-model="model.capsuleName" class="form-control">
                             <label class="">Save to selected capsule Collection</label>
                             <option selected="selected" ng-value="">
-                                Untitled (default if none selected)
+                                Untitled (default, wont be saved in record)
                             </option>
                             <option ng-repeat="name in model.capsuleNames" ng-value="name">
                                 {{name}}
