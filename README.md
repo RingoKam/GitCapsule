@@ -49,3 +49,4 @@ Open bash file. Press enter. wola! Bash will...
 1. Clone (if repo doesnt exist) 
 2. Stash your local changes (if repo exist)
 3. Checkout the commit you specified in the app. 
+4. A report will be generated at the end.
