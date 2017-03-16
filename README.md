@@ -23,7 +23,7 @@ Select the git repos you wish to export/save. Checked off commit will be include
 Capsules (dropdown)
 </dt>
 <dd>
-Collection of repos. If no repos are selected, will default to untitled.
+Collection of repos. If no repos are selected, app would not save a record. 
 </dd>
 <dt>
 Filename (textfield)
@@ -56,5 +56,5 @@ Open bash file. Press enter. wola! Bash will...
 ------
 
 ## Recreate or Update Bash
-![ManageScreen](https://github.com/RingoKam/GitCapsules/blob/master/screenshots/managescreen.PNG)
-Select bash script you wish to update/re-create. Click on the refresh button. It will refresh and grab current commit you are on. 
+![ManageScreen](https://github.com/RingoKam/GitCapsules/blob/master/screenshots/recreate.gif)
+Select bash script you wish to update/re-create. Click on the refresh button. It will refresh and grab current commit you are on. Follow [step2 and step3 from then](#select-git-repos), file out form, export and run bash script. 
