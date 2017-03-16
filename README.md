@@ -15,10 +15,33 @@ Click create and select your git projects directory. It can be a root directory 
 ## Select Git Repos
 ![step2](https://github.com/RingoKam/GitCapsules/blob/master/screenshots/step2gif.gif)
 Select the git repos you wish to export/save. Checked off commit will be included in bash script. Fill out the bash script info form.
-Capsules (dropdown): Collection of repos. If no repos are selected, will default to untitled.
-Filename (textfield): Name of Bash File.
-ExportLocation (dialog): export location of bash file.
-Comment(textarea): Optional, comment will display when user open bash script. 
+
+<dl>
+<dt>
+Capsules (dropdown)
+</dt>
+<dd>
+Collection of repos. If no repos are selected, will default to untitled.
+</dd>
+<dt>
+Filename (textfield)
+</dt>
+<dd>
+Name of Bash File.
+</dd>
+<dt>
+ExportLocation (dialog)
+</dt>
+<dd>
+export location of bash file.
+</dd>
+<dt>
+Comment(textarea)
+</dt>
+<dd>
+Optional, comment will display when user open bash script. 
+</dd>
+</dl>
 
 ## run bash script
 
