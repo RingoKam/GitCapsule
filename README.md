@@ -8,7 +8,7 @@ Stuck on building an application that has dependency on **multiple repos** with 
 2. [Checked off git repos you wish to export/copy, Fill out bash file info  on the right.](#select-git-repos)
 3. [run generated bash script on to another pc.](#run-bash-script)
 ##### Updated your git repos? need to create updated bash script again? No problem!
-1. [Recreate or Update Bash](#re-create-or-update-bash)  
+1. [Recreate or Update Bash](#re-create-or-update-bash)
 ------
 ## Open Git Repos Directory
 ![step1](https://github.com/RingoKam/GitCapsules/blob/master/screenshots/step1gif.gif)
