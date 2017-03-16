@@ -6,7 +6,9 @@ Stuck on building an application that has dependency on **multiple repos** with 
 ##### Redeploy your git env in a flash in 3 simple steps:
 1. [Select your git repos directory. it can be a root directory of multiple git repos.](#open-git-repos-directory)  
 2. [Checked off git repos you wish to export/copy, Fill out bash file info  on the right.](#select-git-repos)
-3. [run generated bash script on to another pc.](#run-bash-script) 
+3. [run generated bash script on to another pc.](#run-bash-script)
+##### Updated your git repos? need to create updated bash script again? No problem!
+1. [Go to Manage Screen](#re-create-bash)  
 ------
 ## Open Git Repos Directory
 ![step1](https://github.com/RingoKam/GitCapsules/blob/master/screenshots/step1gif.gif)
@@ -50,3 +52,9 @@ Open bash file. Press enter. wola! Bash will...
 2. Stash your local changes (if repo exist)
 3. Checkout the commit you specified in the app. 
 4. A report will be generated at the end.
+
+------
+
+## Re Create Bash
+![ManageScreen](https://github.com/RingoKam/GitCapsules/blob/master/screenshots/managescreen.PNG)
+Select bash script you wish to update/re-create. Click on the refresh button. It will refresh and grab current commit you are on. 
