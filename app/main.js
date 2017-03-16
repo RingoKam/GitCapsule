@@ -14,28 +14,14 @@ electron.app.on('ready', () => {
         show: false
     })
     mainWindow.once('ready-to-show', () => {
-        mainWindow.show(); 
+        mainWindow.show();
     })
     mainWindow.loadURL('file://' + __dirname + '/index.html');
     mainWindow.on('closed', function () {
         mainWindow = null
     })
 
-    menuTemplate = [{
-        label: "File",
-        submenu: [{
-            label: 'Add directory to current collection',
-            click: () => {
-                electron.dialog.showOpenDialog({
-                    title: "Select a folder",
-                    properties: ["openDirectory"]
-                }, (filePath) => {
-                    let gitFolder = gitFolderInfo.GitFolders(filePath[0]);
-                    console.log(gitFolder);
-                });
-            }
-        }]
-    }];
+    let menuTemplate = [];
 
     let menu = electron.Menu.buildFromTemplate(menuTemplate)
 
@@ -49,4 +35,10 @@ electron.app.on('ready', () => {
     }));
 
     electron.Menu.setApplicationMenu(menu);
+});
+
+electron.app.on('close', () => {
+    if (process.platform != 'darwin') {
+        electron.app.quit();
+    }
 });
