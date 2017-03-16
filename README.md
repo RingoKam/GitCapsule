@@ -10,11 +10,15 @@ Stuck on building an application that has dependency on **multiple repos** with 
 ------
 ## Open Git Repos Directory
 ![step1](https://github.com/RingoKam/GitCapsules/blob/master/screenshots/step1gif.gif)
-Click create and select your git projects directory. It can be a root directory of all your git repos or just 1. Git Capsules will retrieve all valid git repos with [Remote Origin]. 
+Click create and select your git projects directory. It can be a root directory of all your git repos or just 1. Git Capsules will retrieve all valid git repos with [Remote Origin] and display on screen with folder name and current commit. 
 
 ## Select Git Repos
-
-pending...
+![step2](https://github.com/RingoKam/GitCapsules/blob/master/screenshots/step2gif.gif)
+Select the git repos you wish to export/save. Checked off commit will be included in bash script. Fill out the bash script info form.
+Capsules (dropdown): Collection of repos. If no repos are selected, will default to untitled.
+Filename (textfield): Name of Bash File.
+ExportLocation (dialog): export location of bash file.
+Comment(textarea): Optional, comment will display when user open bash script. 
 
 ## run bash script
 
