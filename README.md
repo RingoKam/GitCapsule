@@ -44,5 +44,8 @@ Optional, comment will display when user open bash script.
 </dl>
 
 ## run bash script
-
-pending...
+![step3](https://github.com/RingoKam/GitCapsules/blob/master/screenshots/step3gif.gif)
+Open bash file. Press enter. wola! Bash will...
+1. Clone (if repo doesnt exist) 
+2. Stash your local changes (if repo exist)
+3. Checkout the commit you specified in the app. 
