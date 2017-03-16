@@ -23,7 +23,7 @@ Select the git repos you wish to export/save. Checked off commit will be include
 Capsules (dropdown)
 </dt>
 <dd>
-Collection of repos. If no repos are selected, will default to untitled.
+Collection of repos. If no repos are selected, app would not save a record. 
 </dd>
 <dt>
 Filename (textfield)
