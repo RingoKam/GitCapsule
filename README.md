@@ -9,7 +9,7 @@ Stuck on building an application that has dependency on **multiple repos** with 
 3. [run generated bash script on to another pc.](#run-bash-script) 
 ------
 ## Open Git Repos Directory
-[step1](https://github.com/RingoKam/GitCapsules/blob/master/screenshots/step1gif.gif)
+![step1](https://github.com/RingoKam/GitCapsules/blob/master/screenshots/step1gif.gif)
 Click create and select your git projects directory. It can be a root directory of all your git repos or just 1. Git Capsules will retrieve all valid git repos with [Remote Origin]. 
 
 ## Select Git Repos
