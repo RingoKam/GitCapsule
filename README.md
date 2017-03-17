@@ -5,13 +5,12 @@ Stuck on building an application that has dependency on **multiple repos** with 
 
 ### Git Capsules is a small desktop application that can read your Git repositories and reproduce them on another machine with the same folder structure.
 
-Features:
-•	It gives you the ability to select your Git Repos Folder and create a bash script based on the Repo [master origin] URL and commit Id. The Bash script can be run on any machine and will… 
-1.	Recreate the same folder structure and clone repos (if they doesn’t exist)
-2.	Stash changes (if a repo exists and contains uncommitted changes) 
-3.	Checkout a detached head at the designated Commit Id
-•	Every bash script generated can be saved as JSON and recreated. Next time you need another build with the same repos but with different commit, just refresh and Export. See example Below.  
-
+### Features:
+* It gives you the abil⋅⋅it to select your Git Repos Folder and create a bash script based on the Repo [master origin] URL and commit Id. The Bash script can be run on any machine and will… 
+⋅⋅1. Recreate the same folder structure and clone repos (if they doesn’t exist)
+⋅⋅2. Stash changes (if a repo exists and contains uncommitted change s) 
+⋅⋅3. Checkout a detached head at the designated Commit I d
+* Every bash script generated can be saved as JSON and  recreated. Next time you need another build with the same repos but with different commit, just refresh and Export. See example Below.  
 
 ##### Redeploy your git env in a flash in 3 simple steps:
 1. [Select your git repos directory. it can be a root directory of multiple git repos.](#open-git-repos-directory)  
