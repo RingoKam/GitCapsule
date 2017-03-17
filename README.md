@@ -3,6 +3,8 @@
 ------
 Stuck on building an application that has dependency on **multiple repos** with **predefined folder structure**? Wants to bundle your **git repositories** and **redeploy** it on to another pc? Git Capsules can help!  
 
+### Git Capsules is a small desktop application that can read your Git repositories and reproduce them on another machine with the same folder structure.
+
 ##### Redeploy your git env in a flash in 3 simple steps:
 1. [Select your git repos directory. it can be a root directory of multiple git repos.](#open-git-repos-directory)  
 2. [Checked off git repos you wish to export/copy, Fill out bash file info  on the right.](#select-git-repos)
