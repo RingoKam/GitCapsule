@@ -37,7 +37,7 @@ electron.app.on('ready', () => {
     electron.Menu.setApplicationMenu(menu);
 });
 
-electron.app.on('close', () => {
+electron.app.on('window-all-closed', () => {
     if (process.platform != 'darwin') {
         electron.app.quit();
     }
