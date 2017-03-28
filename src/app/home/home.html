@@ -7,41 +7,46 @@
                 <h4 class="title"> {{ collection.name }} </h4>
                 <p class="category">Number of Bash Files: {{collection.capsules.length}} </p>
             </div>
-            <div class="card-content table-responsive" ng-if="collection.show && collection.capsules.length > 0">
-                <div heatmap chart-data="collection.heatmap" filter="collection.filter"></div>
-                <div class="form-group">
-                    <input type="text" ng-model="collection.filter" placeholder="Filter..." class="form-control"/>
+            <div class="card-content table-responsive" ng-show="collection.show">
+                <div ng-if="collection.capsules && collection.capsules.length > 0">
+                    <div heatmap chart-data="collection.heatmap" filter="collection.filter"></div>
+                    <div class="form-group">
+                        <input type="text" ng-model="collection.filter" placeholder="Filter..." class="form-control" />
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>FileName</th>
+                                <th>CreatedOn</th>
+                                <th>Repos#</th>
+                                <th>Comment</th>
+                                <th>Action(s)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr dir-paginate="capsule in collection.capsules | itemsPerPage: 5 | filter:collection.filter">
+                                <td>{{capsule.fileName}}</td>
+                                <td>{{capsule.createdOn}}</td>
+                                <td>{{capsule.numberOfProject}}</td>
+                                <td>{{capsule.comment}}</td>
+                                <td>
+                                    <button class="btn btn-success" ng-click="model.changeState(capsule.id)">Create</button>
+                                    <button class="btn btn-info" ng-click="model.ShowDetail(capsule.json)">Detail</button>
+                                    <button class="btn btn-danger" ng-click="model.Delete(capsule.id)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center">
+                        <dir-pagination-controls></dir-pagination-controls>
+                    </div>
                 </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>FileName</th>
-                            <th>CreatedOn</th>
-                            <th>Repos#</th>
-                            <th>Comment</th>
-                            <th>Action(s)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr dir-paginate="capsule in collection.capsules | itemsPerPage: 5 | filter:collection.filter">
-                            <td>{{capsule.fileName}}</td>
-                            <td>{{capsule.createdOn}}</td>
-                            <td>{{capsule.numberOfProject}}</td>
-                            <td>{{capsule.comment}}</td>
-                            <td>
-                                <button class="btn btn-success" ng-click="model.changeState(capsule.id)">Create</button>
-                                <button class="btn btn-info" ng-click="model.ShowDetail(capsule.json)">Detail</button>
-                                <button class="btn btn-danger" ng-click="model.Delete(capsule.id)">Delete</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="text-center">
-                    <dir-pagination-controls></dir-pagination-controls>
+                <div>
+                    <input class="btn btn-block" value="(+)Import" ng-click="model.PromptImportCapsule(collection.name)"/>
                 </div>
             </div>
             <div class="card-footer">
-                <p class="stats text-center" ng-show="collection.capsules.length > 0" ng-click="collection.show = !collection.show">
+                <p class="stats text-center" ng-click="collection.show = !collection.show">
                     <i ng-if="!collection.show" class="fa fa-chevron-circle-down">  </i>
                     <i ng-if="collection.show" class="fa fa-chevron-circle-up">  </i>
                 </p>

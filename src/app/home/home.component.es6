@@ -26,7 +26,6 @@ function ManageController($state, $scope, $mdDialog) {
         this.dbRecords;
         this.dbCapsuleNames = this.dbCapsuleNames;
         model.capsuleCollections = BuildTableData(this.dbRecords, this.dbCapsuleNames);
-        debugger;
         if (model.capsulename && model.capsulename.length > 0) model.capsuleCollections = model.capsuleCollections.map(m => {
             m.show = true;
             return m; 
@@ -66,6 +65,39 @@ function ManageController($state, $scope, $mdDialog) {
         $mdDialog.show(confirm).then(function () {
             Delete(id);
         });
+    }
+
+    model.PromptImportCapsule = (capsulename) => {
+        console.log(capsulename);
+        var confirm = $mdDialog.prompt()
+            .title('import capsules')
+            .textContent('Paste JSON String here')
+            .placeholder('* PASTE HERE *')
+            .ariaLabel('import')
+            .ok('Confirm')
+            .cancel('Cancel');
+
+        $mdDialog.show(confirm).then((jsonString) => {
+            let json = JSON.parse(jsonString);
+            json.capsule = capsulename; 
+            delete json._id; 
+            dataStore.insertdb(json).then(() => {
+                remote.getCurrentWindow().reload();
+            });
+        })
+        // $mdDialog.show({
+        //     title: 'Paste JSON string here',
+        //     template: '<md-dialog aria-label="List dialog">' +
+        //    '  <md-dialog-content>'+
+        //    '  <md-input-container> <textarea auto-focus="true"></textarea> </md-input-container>' + 
+        //    '  </md-dialog-content>' +
+        //    '  <md-dialog-actions>' +
+        //    '    <md-button ng-click="closeDialog()" class="md-primary">' +
+        //    '      Close Dialog' +
+        //    '    </md-button>' +
+        //    '  </md-dialog-actions>' +
+        //    '</md-dialog>' 
+        // })
     }
 
     model.PromptNewCapsule = (ev) => {
@@ -122,9 +154,8 @@ function ManageController($state, $scope, $mdDialog) {
             }
         })
     }
-
+    
     function Delete(id) {
-        debugger;
         dataStore.remove({
             _id: id
         }).then(() => {
