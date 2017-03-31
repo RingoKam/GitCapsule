@@ -1,6 +1,6 @@
 {
   "name": "gitcapsules",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Redeploy your git env in a flash",
   "main": "app/main.js",
   "scripts": {
